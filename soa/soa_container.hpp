@@ -57,11 +57,11 @@ template <class T> inline void swap(T&& lhs, T&& rhs) noexcept {
 
 namespace SOA_ {
 
-template<typename Vector,typename First,typename Last,typename do_continue>
+template<typename Vector, typename First, typename Last, typename stop_iteration>
 struct to_fusion_map_iter;
 
-template<typename Vector,typename First,typename Last>
-struct to_fusion_map_iter<Vector,First,Last,mpl::false_>
+template<typename Vector, typename First, typename Last>
+struct to_fusion_map_iter<Vector, First, Last, mpl::false_>
 {
     typedef typename fusion::result_of::next<First>::type Next;
     typedef typename mpl::push_front
@@ -71,7 +71,7 @@ struct to_fusion_map_iter<Vector,First,Last,mpl::false_>
             Vector,
             Next,
             Last,
-            typename fusion::result_of::equal_to<Next,Last>::type
+            typename fusion::result_of::equal_to<Next, Last>::type
         >::type,
         fusion::pair
         <
@@ -80,8 +80,8 @@ struct to_fusion_map_iter<Vector,First,Last,mpl::false_>
         >
     >::type type;
 };
-template<typename Vector,typename First,typename Last>
-struct to_fusion_map_iter<Vector,First,Last,mpl::true_>
+template<typename Vector, typename First, typename Last>
+struct to_fusion_map_iter<Vector, First, Last, mpl::true_>
 {
     typedef Vector type;
 };
@@ -98,7 +98,7 @@ struct as_fusion_map
             mpl::vector<>,
             First,
             Last,
-            typename fusion::result_of::equal_to<First,Last>::type
+            typename fusion::result_of::equal_to<First, Last>::type
         >::type
     >::type type;
 };
