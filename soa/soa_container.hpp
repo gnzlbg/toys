@@ -105,9 +105,8 @@ struct as_fusion_map
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-/// The idea behind map mutator was provided by
-/// see:
-
+/// The idea behind map mutator was provided by cv_and_he
+/// see: http://stackoverflow.com/questions/19540291/assigning-to-a-map-of-references-from-a-map-of-values-references
 
 template<class Output, class Predicate> struct map_mutator {
   map_mutator(Output& map) : map_out(map) {}
