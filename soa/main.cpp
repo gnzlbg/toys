@@ -75,6 +75,7 @@ int main() {
   std::cout << "After transform:\n";
   print(soa);
 
+  /// We can push back both: the fusion map representing the struct
   auto val = typename SOAVector<Struct>::value_type {
     make_pair<k::x>(static_cast<float>(1.0)),
     make_pair<k::y>(static_cast<double>(2.0)),
@@ -86,6 +87,7 @@ int main() {
   std::cout << "After push_back of (1., 2., 3. true):\n";
   print(soa);
 
+  /// And also the struct itself:
   Struct tmp;
   tmp.x = 4.0;
   tmp.y = 3.0;
