@@ -97,4 +97,12 @@ int main() {
   soa.push_back(tmp);
   std::cout << "After push_back of Struct (4., 3., 2. false):\n";
   print(soa);
+
+
+  /// Example of get_container
+  std::cout << "elements of k::y container: (";
+  for (auto i : soa.get_container<k::y>()) {
+    std::cout << i << ", ";
+  }
+  std::cout << ")\n";
 }

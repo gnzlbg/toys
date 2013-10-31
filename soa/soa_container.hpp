@@ -516,7 +516,10 @@ template<class T, template <class> class Container> struct StructOfArrays {
   void resize(std::size_t n) { fusion::for_each(data_, resize_(n)); }
   // swap
 
-  // private:
+  // Other
+  template<class K> auto& get_container() { return fusion::at_key<K>(data_); }
+
+ private:
   data data_;
 };
 
